@@ -17,15 +17,19 @@ class runSolver():
     def findGCD(self):
         x_value = self.equation[:self.equation.index('x')] # slice from index 0 to 'x'
         y_value = self.equation[self.equation.index('x') + 2:self.equation.index('y')] # slice from index 'x' + 1 to 'y'
-        z_value = self.equation[self.equation.index('y') + 2:] # slice from index 'y' + 2 to the end
 
         gcd = math.gcd(int(x_value), int(y_value))
-
-        print(z_value)
+        return gcd
 
     def checkGCD(self, gcd):
-        pass
+        z_value = self.equation[self.equation.index('y') + 2:] # slice from index 'y' + 2 to the end
+
+        if(int(z_value) % gcd == 0):
+            print("Solutions found!")
+        else:
+            print("No possible solutions.")
 
 rs = runSolver()
 
 rs.findGCD()
+rs.checkGCD(rs.findGCD())
